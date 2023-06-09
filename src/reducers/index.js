@@ -1,25 +1,42 @@
-import { FETCH_DATA } from '../actions/boredFetch';
+import { FETCH_DATA_REQUEST, FETCH_DATA_ERROR, FETCH_DATA_SUCCESS } from '../actions/boredFetch';
 
 
 const initialState = {
-    activity:"Press a button"
+    activity:"Press a button",
+    loading: false,
+    data: null,
+    error: null
   };
 
 
   
   const boredReducer = (state = initialState, action) => {
     switch (action.type) {
-      // Handle different action types and update the state accordingly
-      // For example:
-      case FETCH_DATA:
+      case FETCH_DATA_REQUEST:
         return {
-          ...state
+          ...state,
+          loading: true,
+          error: null
         };
-      // Add more cases as needed
+      case FETCH_DATA_SUCCESS:
+        return {
+          ...state,
+          loading: false,
+          data: action.payload,
+          error: null
+        };
+      case FETCH_DATA_ERROR:
+        return {
+          ...state,
+          loading: false,
+          data: null,
+          error: action.payload
+        };
       default:
         return state;
     }
   };
+  
 
 
   export default boredReducer;
