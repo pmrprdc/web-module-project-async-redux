@@ -16,7 +16,7 @@ function App(props) {
     <h1>{props.activity}</h1>
      <h1>Bored?</h1>
      <h2>Click the button below to get a new activity</h2>
-     <button>I'm bored</button>
+     <button onClick={props.dataFetch}>I'm bored</button>
     </div>
    
   );
