@@ -4,6 +4,7 @@
   width: 50%;
   margin: 20% auto;
   background-color: pink;
+  padding: 100px;
   
 }
 
@@ -40,4 +41,10 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.thebutton {
+  color: blue;
+  width: 50%;
+  background-color: limegreen;
 }
