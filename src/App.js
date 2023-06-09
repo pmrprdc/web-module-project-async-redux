@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import './App.css';
-import { connect } from 'react-redux';
+import { connect, useSelector } from 'react-redux';
 import { fetchDataRequest, fetchData } from './actions/boredFetch';
 
 
@@ -8,21 +8,26 @@ import { fetchDataRequest, fetchData } from './actions/boredFetch';
 
 
 
-
 function App(props) {
+  
 
+  const [started, setStarted] = useState("Bored?")
 
-
-
+  const clickHandler = () => {
+    props.fetchData();
+    setStarted("Still Bored?")
+  }
 
 
   return (
     
     <div className="App">
+      
+    <h1>{started}</h1>+
     <h1>{props.activity}</h1>
-     <h1>Bored?</h1>
-     <h2>Click the button below to get a new activity</h2>
-     <button onClick={props.fetchData}>I'm bored</button>
+    {props.loading && <h1>LOADING</h1>}
+     {props.error && <h1>{props.error}</h1>}
+     <button className="thebutton"onClick={clickHandler}>I'm bored</button>
     </div>
    
   );
@@ -35,7 +40,8 @@ const mapDispatchToProps = {
 }
 const mapStateToProps = state => {
 
-  return {activity: state.activity,
+  return {
+    activity: state.activity,
     loading: state.loading,
     data: state.data,
     error: state.error

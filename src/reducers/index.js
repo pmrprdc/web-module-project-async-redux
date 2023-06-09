@@ -2,7 +2,7 @@ import { FETCH_DATA_REQUEST, FETCH_DATA_ERROR, FETCH_DATA_SUCCESS } from '../act
 
 
 const initialState = {
-    activity:"Press a button",
+    activity:"Press button",
     loading: false,
     data: null,
     error: null
@@ -22,7 +22,7 @@ const initialState = {
         return {
           ...state,
           loading: false,
-          data: action.payload,
+          activity: action.payload,
           error: null
         };
       case FETCH_DATA_ERROR:

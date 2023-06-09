@@ -11,9 +11,10 @@ export const fetchDataRequest = () => {
 };
 
 export const fetchDataSuccess = (data) => {
+    console.log(data)
   return {
     type: FETCH_DATA_SUCCESS,
-    payload: data
+    payload: data.activity
   };
 };
 
